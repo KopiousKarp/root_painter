@@ -52,7 +52,7 @@ def get_latest_model_paths(model_dir, k):
     return fpaths
 
 def load_model(model_path, classes):
-    state_dict = torch.load(model_path)
+    state_dict = torch.load(model_path, weights_only=True)
     if 'classes' not in state_dict:
         print(f'adding classes {classes} to model and resaving')
         # this fixes older multiclass models that did not have classes saved.
